@@ -35,6 +35,27 @@
   }
   .container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
 
+  /* ---------- 顶部导航 ---------- */
+  .topnav {
+    position: sticky; top: 0; z-index: 100;
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--line);
+  }
+  .topnav .inner {
+    max-width: 1060px; margin: 0 auto; padding: 0 24px;
+    height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .topnav .brand { font-size: 15px; font-weight: 800; color: var(--orange-deep); }
+  .topnav .links { display: flex; gap: 4px; }
+  .topnav a {
+    text-decoration: none; color: var(--text-light);
+    font-size: 14px; font-weight: 600;
+    padding: 8px 16px; border-radius: 999px;
+  }
+  .topnav a:hover { color: var(--orange-deep); }
+  .topnav a.active { background: var(--bg-soft); color: var(--orange-deep); }
+
   /* ---------- Hero ---------- */
   .hero {
     background: linear-gradient(135deg, #FFA600, #FFD54F, #FFE9A8);
@@ -228,6 +249,17 @@
 </style>
 </head>
 <body>
+
+<!-- ======== 顶部导航 ======== -->
+<nav class="topnav">
+  <div class="inner">
+    <span class="brand">🐸 不合理蛙AI学社</span>
+    <div class="links">
+      <a href="https://s393801048.github.io/agent-showcase/" class="active">Agent 展示</a>
+      <a href="https://s393801048.github.io/bootcamp-intro/">训练营介绍</a>
+    </div>
+  </div>
+</nav>
 
 <!-- ======== Hero ======== -->
 <header class="hero">
