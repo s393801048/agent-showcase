@@ -60,6 +60,13 @@
     font-weight: 500;
   }
   .hero .chips { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .hero .frog {
+    position: absolute; right: 5%; top: 26px;
+    width: 150px; height: 150px;
+    border-radius: 50%; object-fit: cover;
+    border: 4px solid rgba(255,255,255,.65);
+    box-shadow: 0 10px 24px rgba(179,107,0,.25);
+  }
   .hero .chip {
     background: rgba(255,255,255,.85); color: #7a5a00;
     padding: 8px 18px; border-radius: 999px; font-size: 14px; font-weight: 600;
@@ -192,15 +199,6 @@
   .stack .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
 
   /* ---------- 训练营 tab 内容 ---------- */
-  .camp-hero { text-align: center; padding: 26px 0 14px; }
-  .camp-frog {
-    width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
-    border: 4px solid rgba(255,166,0,.25);
-    box-shadow: 0 10px 24px rgba(255,166,0,.18);
-    margin-bottom: 18px;
-  }
-  .camp-hero h2 { font-size: 32px; font-weight: 900; letter-spacing: .5px; }
-  .camp-hero .sub { color: var(--text-light); font-size: 15.5px; margin-top: 10px; }
   .camp-card {
     background: #FFFDF7; border: 1px solid #F3E3B8; border-left: 4px solid var(--orange);
     border-radius: var(--radius-m); padding: 20px 24px; margin: 16px 0;
@@ -254,10 +252,10 @@
 
   @media (max-width: 760px) {
     .hero h1 { font-size: 30px; }
+    .hero .frog { width: 92px; height: 92px; right: 12px; top: 14px; }
     .steps, .dual { grid-template-columns: 1fr; }
     .replay .bubble { max-width: 100%; }
     section { padding-top: 56px; }
-    .camp-hero h2 { font-size: 26px; }
   }
 </style>
 </head>
@@ -268,7 +266,7 @@
   <div class="container">
     <span class="badge">🐸 不合理蛙AI学社</span>
     <h1>AI第二大脑Agent——个人知识库与内容创作系统</h1>
-    <p class="sub">在飞书里说一句「帮我写《…》」，它按「选题 → 规律 → 写作 → 配图 → 小红书文案 → 复盘」六个环节帮你把内容生产跑完——每个需要拍板的节点，它都停下来等你。</p>
+    <p class="sub">手把手带你打造AI第二大脑Agent，系统性学习如何从0构建一个符合真实业务流程Agent的全过程，成为Agent架构师。</p>
     <div class="chips">
       <span class="chip">✅ 六环节闭环</span>
       <span class="chip">⏸ 每个节点等确认</span>
@@ -276,6 +274,7 @@
       <span class="chip">📊 发布后 24h 回填复盘</span>
     </div>
   </div>
+  <img class="frog" src="frog-hero.png" alt="小蛙">
 </header>
 
 <!-- ======== 横向导航 ======== -->
@@ -403,19 +402,14 @@
 
   <section>
     <div class="container">
-      <div class="camp-hero">
-        <img src="frog-hero.png" alt="小蛙" class="camp-frog">
-        <h2>打造第二大脑Agent，成为Agent架构师</h2>
-        <p class="sub">每天 2 小时，共 6 天时间，手把手带你打造个人知识库——AI 第二大脑，构建内容创作系统，成为 Agent 架构师。</p>
-      </div>
 
-      <h2 class="sec-title" style="margin-top:36px;">我先说它现在长什么样</h2>
-      <p>我给自己搭了一个 AI 员工，24 小时在飞书里在线。</p>
+      <h2 class="sec-title" style="margin-top:36px;">我的第二大脑Agent，是一个24小时在线的AI员工</h2>
       <p>AI 员工不仅仅是一个聊天机器人，它带有我个人的整套工作流程。</p>
       <p>我只需要跟它说：「帮我写《XX》」，它就走完「选题 → 规律 → 写作 → 配图 → 小红书文案 → 复盘」六环节，把一篇文章从想法推到排好版。每个需要我拍板的节点——素材包、标题、成稿、配图、复盘——它都停下来等我，绝不擅自往前。</p>
       <p>从最初让 AI 访谈我、把我脑子里的判断一条条挖出来，到生成第一张岗位卡，再到整套系统跑通，我一共花了半个多月时间。也是我一年多以来用 AI 写东西、整理我的知识库的工作流沉淀。</p>
 
       <h2 class="sec-title" style="margin-top:36px;">这 6 天，带你搭出三样东西</h2>
+      <p>先说明一点：这套方法不只用来做 AI 写作。如果你现在没有用 AI 辅助写作的需求，也欢迎用这套方法搭建其他工作场景的 Agent——AI 第二大脑和内容创作系统，只是我用来演示这套方法的一个具体场景。</p>
       <div class="camp-card">
         <h3>第一样：个人知识库，也就是你的 AI 第二大脑</h3>
         <p>把日常沟通、想法、会议记录、看到的课程、文章……经过清洗、沉淀，放进自己的知识库。</p>
