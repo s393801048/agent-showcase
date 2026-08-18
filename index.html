@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI第二大脑Agent——个人知识库与内容创作系统</title>
-<meta name="description" content="不合理蛙AI学社的数字员工「AI自媒体运营助手」：在飞书里说一句话，它按六环节推进内容生产，每个关键节点都停下来等你拍板。本页为演示。">
+<meta name="description" content="不合理蛙AI学社：AI第二大脑Agent 数字员工展示 + 打造第二大脑Agent训练营。">
 <style>
   :root {
     --orange: #FFA600;
@@ -34,27 +34,6 @@
     -webkit-font-smoothing: antialiased;
   }
   .container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
-
-  /* ---------- 顶部导航 ---------- */
-  .topnav {
-    position: sticky; top: 0; z-index: 100;
-    background: #FFFFFF;
-    border-bottom: 1px solid var(--line);
-  }
-  .topnav .inner {
-    max-width: 1060px; margin: 0 auto; padding: 0 24px;
-    height: 56px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .topnav .brand { font-size: 15px; font-weight: 800; color: var(--orange-deep); }
-  .topnav .links { display: flex; gap: 4px; }
-  .topnav a {
-    text-decoration: none; color: var(--text-light);
-    font-size: 14px; font-weight: 600;
-    padding: 8px 16px; border-radius: 999px;
-  }
-  .topnav a:hover { color: var(--orange-deep); }
-  .topnav a.active { background: var(--bg-soft); color: var(--orange-deep); }
 
   /* ---------- Hero ---------- */
   .hero {
@@ -86,6 +65,27 @@
     padding: 8px 18px; border-radius: 999px; font-size: 14px; font-weight: 600;
     box-shadow: 0 6px 18px rgba(255,255,255,.4);
   }
+
+  /* ---------- 横向导航（banner 下方） ---------- */
+  .tabs-bar {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--line);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .tabs-bar .container { display: flex; gap: 10px; padding-top: 12px; padding-bottom: 12px; }
+  .tab {
+    border: none; background: transparent; cursor: pointer;
+    font-family: var(--font-cn); font-size: 15px; font-weight: 700;
+    color: var(--text-light); padding: 10px 26px; border-radius: 999px;
+    transition: all .2s;
+  }
+  .tab:hover { color: var(--orange-deep); }
+  .tab.active {
+    background: linear-gradient(135deg, var(--orange), var(--orange-deep));
+    color: #fff; box-shadow: 0 6px 16px rgba(255,166,0,.3);
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
 
   /* ---------- 通用区块 ---------- */
   section { padding: 72px 0 8px; }
@@ -158,48 +158,6 @@
   .step-detail li { margin-bottom: 4px; }
   .step-detail b { color: var(--text); }
 
-  /* ---------- 模拟器 ---------- */
-  .sim-wrap {
-    background: linear-gradient(135deg, rgba(255,166,0,.06), rgba(255,216,96,.10));
-    border-radius: var(--radius-xl); padding: 34px;
-  }
-  .sim-head { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
-  .sim-head .avatar { width: 44px; height: 44px; border-radius: 999px; background: linear-gradient(135deg, var(--orange), var(--orange-deep)); color: #fff; font-size: 20px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
-  .sim-head .name { font-weight: 800; font-size: 16px; }
-  .sim-head .status { font-size: 12.5px; color: var(--green); font-weight: 600; }
-  .sim-head .status::before { content: "● "; }
-  .sim-note { font-size: 12.5px; color: var(--text-light); margin-bottom: 16px; }
-  .sim-chat {
-    background: #FFFFFF; border-radius: var(--radius-l);
-    min-height: 380px; max-height: 520px; overflow-y: auto;
-    padding: 22px; margin-bottom: 16px;
-    border: 1.5px solid var(--line);
-    display: flex; flex-direction: column; gap: 12px;
-  }
-  .sim-msg { display: flex; gap: 10px; align-items: flex-end; animation: fadeUp .3s ease; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-  .sim-msg .av { width: 28px; height: 28px; border-radius: 999px; flex: none; color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
-  .sim-msg.user { justify-content: flex-end; }
-  .sim-msg.user .av { background: #888; order: 2; }
-  .sim-msg.bot .av { background: linear-gradient(135deg, var(--orange), var(--orange-deep)); }
-  .sim-msg .bub { background: #F5F5F5; border-radius: 6px 16px 16px 16px; padding: 11px 15px; max-width: 78%; font-size: 14.5px; }
-  .sim-msg.user .bub { background: var(--bg-soft); border-radius: 16px 6px 16px 16px; }
-  .sim-msg .bub .st { color: var(--text-light); font-size: 12px; display: block; margin-bottom: 2px; }
-  .sim-msg .bub pre { background: #FFF9EC; border-radius: var(--radius-s); padding: 10px 12px; font-family: var(--font-cn); font-size: 13px; line-height: 1.7; white-space: pre-wrap; margin: 8px 0; }
-  .sim-msg .bub .hl { color: #B36B00; font-weight: 700; }
-  .typing { display: inline-flex; gap: 5px; padding: 12px 16px; background: #F5F5F5; border-radius: 6px 16px 16px 16px; }
-  .typing span { width: 7px; height: 7px; border-radius: 50%; background: #ccc; animation: blink 1.2s infinite; }
-  .typing span:nth-child(2) { animation-delay: .2s; }
-  .typing span:nth-child(3) { animation-delay: .4s; }
-  @keyframes blink { 0%, 80%, 100% { opacity: .25; } 40% { opacity: 1; } }
-  .sim-quick { display: flex; flex-wrap: wrap; gap: 10px; }
-  .sim-quick button {
-    background: #FFFFFF; border: 1.5px solid var(--stroke); color: #B36B00;
-    border-radius: 999px; padding: 8px 18px; font-size: 14px; font-weight: 700; cursor: pointer;
-    font-family: var(--font-cn); transition: all .2s;
-  }
-  .sim-quick button:hover { background: linear-gradient(135deg, var(--orange), var(--orange-deep)); color: #fff; border-color: transparent; box-shadow: 0 6px 16px rgba(255,166,0,.35); }
-
   /* ---------- 能做/不能做 ---------- */
   .dual { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .panel { border-radius: var(--radius-l); padding: 26px; }
@@ -233,6 +191,60 @@
   .stack .pill b { color: #B36B00; }
   .stack .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
 
+  /* ---------- 训练营 tab 内容 ---------- */
+  .camp-hero { text-align: center; padding: 26px 0 14px; }
+  .camp-frog {
+    width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
+    border: 4px solid rgba(255,166,0,.25);
+    box-shadow: 0 10px 24px rgba(255,166,0,.18);
+    margin-bottom: 18px;
+  }
+  .camp-hero h2 { font-size: 32px; font-weight: 900; letter-spacing: .5px; }
+  .camp-hero .sub { color: var(--text-light); font-size: 15.5px; margin-top: 10px; }
+  .camp-card {
+    background: #FFFDF7; border: 1px solid #F3E3B8; border-left: 4px solid var(--orange);
+    border-radius: var(--radius-m); padding: 20px 24px; margin: 16px 0;
+  }
+  .camp-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 8px; }
+  .camp-card p { font-size: 15px; margin: 8px 0; }
+  .camp-step { display: flex; gap: 14px; margin: 14px 0; }
+  .camp-step .num {
+    flex: 0 0 auto; width: 34px; height: 34px; border-radius: 999px;
+    background: linear-gradient(135deg, var(--orange), var(--orange-deep));
+    color: #fff; font-weight: 800; display: flex; align-items: center; justify-content: center;
+    margin-top: 2px;
+  }
+  .camp-step .body { flex: 1; }
+  .camp-step .body b { display: block; margin-bottom: 2px; font-size: 15.5px; }
+  .camp-step .body span { font-size: 14.5px; color: #555; }
+  .camp-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14.5px; }
+  .camp-table th {
+    background: linear-gradient(135deg, var(--orange), var(--orange-deep));
+    color: #fff; padding: 10px 12px; text-align: left; font-weight: 700;
+  }
+  .camp-table th:first-child { border-radius: 8px 0 0 0; }
+  .camp-table th:last-child { border-radius: 0 8px 0 0; }
+  .camp-table td { padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .camp-table tr:nth-child(even) td { background: var(--bg-soft); }
+  .camp-table td:first-child { font-weight: 700; color: var(--orange-deep); white-space: nowrap; }
+  .who-list { list-style: none; }
+  .who-list li {
+    padding: 12px 16px 12px 44px; margin: 10px 0;
+    background: var(--bg-soft); border-radius: var(--radius-s);
+    position: relative; font-size: 14.5px;
+  }
+  .who-list li::before { content: "✅"; position: absolute; left: 14px; top: 12px; }
+  .notice {
+    background: #FFF8EC; border: 1px dashed #E8C987; border-radius: var(--radius-s);
+    padding: 16px 18px; margin-top: 20px; font-size: 14.5px;
+  }
+  .camp-frog-footer { text-align: center; margin-top: 44px; }
+  .camp-frog-footer img {
+    width: 120px; border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(255,166,0,.15);
+  }
+  .camp-frog-footer p { font-size: 13px; color: var(--text-light); margin-top: 10px; }
+
   /* ---------- 页脚 ---------- */
   footer { margin-top: 80px; background: #333333; color: #ccc; border-radius: var(--radius-xl) var(--radius-xl) 0 0; padding: 40px 0 48px; }
   footer .container { display: flex; flex-direction: column; gap: 10px; }
@@ -245,26 +257,16 @@
     .steps, .dual { grid-template-columns: 1fr; }
     .replay .bubble { max-width: 100%; }
     section { padding-top: 56px; }
+    .camp-hero h2 { font-size: 26px; }
   }
 </style>
 </head>
 <body>
 
-<!-- ======== 顶部导航 ======== -->
-<nav class="topnav">
-  <div class="inner">
-    <span class="brand">🐸 不合理蛙AI学社</span>
-    <div class="links">
-      <a href="https://s393801048.github.io/agent-showcase/" class="active">Agent 展示</a>
-      <a href="https://s393801048.github.io/bootcamp-intro/">训练营介绍</a>
-    </div>
-  </div>
-</nav>
-
-<!-- ======== Hero ======== -->
+<!-- ======== Hero（共用开头） ======== -->
 <header class="hero">
   <div class="container">
-    <span class="badge">🐸 不合理蛙AI学社 · 数字员工</span>
+    <span class="badge">🐸 不合理蛙AI学社</span>
     <h1>AI第二大脑Agent——个人知识库与内容创作系统</h1>
     <p class="sub">在飞书里说一句「帮我写《…》」，它按「选题 → 规律 → 写作 → 配图 → 小红书文案 → 复盘」六个环节帮你把内容生产跑完——每个需要拍板的节点，它都停下来等你。</p>
     <div class="chips">
@@ -276,143 +278,227 @@
   </div>
 </header>
 
-<!-- ======== 真实对话回放 ======== -->
-<div class="container">
-  <div class="replay">
-    <span class="tag">真实对话回放 · 2026-08-17 实测（飞书私聊）</span>
-    <div class="row">
-      <div class="avatar user">我</div>
-      <div class="bubble user">你好</div>
-    </div>
-    <div class="row">
-      <div class="avatar bot">媒</div>
-      <div class="bubble">
-        你好！我是你的 AI 自媒体运营助手 👋<br>
-        随时可以开始内容生产，比如：<br><br>
-        · <b>写文章</b>：给我选题，我按六环节推进，每个需要你确认的节点都会停下来等你<br>
-        · <b>生成选题</b>：读定位和素材，往选题池里补充候选<br>
-        · <b>复盘</b>：发布后 24 小时回填数据做轻复盘
-      </div>
-    </div>
-    <div class="meta">收到 → 4.7 秒生成回复并送达（gateway 日志 14:35:58 / 14:36:05）</div>
+<!-- ======== 横向导航 ======== -->
+<div class="tabs-bar">
+  <div class="container">
+    <button class="tab active" data-tab="agent">Agent 介绍</button>
+    <button class="tab" data-tab="camp">训练营介绍</button>
   </div>
 </div>
 
-<!-- ======== 六环节 ======== -->
-<section>
-  <div class="container">
-    <h2 class="sec-title">它按什么流程工作</h2>
-    <p class="sec-desc">点击每一环，看它在环节里做什么、遵守什么规则。这套流程来自作者真实工作流（2026-08-10 逐环节访谈挖掘）。</p>
-    <div class="steps" id="steps"></div>
-  </div>
-</section>
+<!-- ======== 面板一：Agent 介绍 ======== -->
+<div id="panel-agent" class="tab-panel active">
 
-<!-- ======== 模拟器 ======== -->
-<section>
+  <!-- 真实对话回放 -->
   <div class="container">
-    <h2 class="sec-title">试试和它对话</h2>
-    <p class="sec-desc">下面的对话框是<b>前端演示模拟器</b>：回复脚本为演示用途手工编写，不连接真实 Agent 和任何 API，不包含任何真实数据。点击快捷指令体验它的工作方式。</p>
-    <div class="sim-wrap">
-      <div class="sim-head">
-        <div class="avatar">媒</div>
-        <div>
-          <div class="name">AI自媒体运营助手</div>
-          <div class="status">演示模式</div>
+    <div class="replay">
+      <span class="tag">真实对话回放 · 2026-08-17 实测（飞书私聊）</span>
+      <div class="row">
+        <div class="avatar user">我</div>
+        <div class="bubble user">你好</div>
+      </div>
+      <div class="row">
+        <div class="avatar bot">媒</div>
+        <div class="bubble">
+          你好！我是你的 AI 自媒体运营助手 👋<br>
+          随时可以开始内容生产，比如：<br><br>
+          · <b>写文章</b>：给我选题，我按六环节推进，每个需要你确认的节点都会停下来等你<br>
+          · <b>生成选题</b>：读定位和素材，往选题池里补充候选<br>
+          · <b>复盘</b>：发布后 24 小时回填数据做轻复盘
         </div>
       </div>
-      <p class="sim-note">真实版本运行在作者的飞书里，点击快捷指令体验演示流程。</p>
-      <div class="sim-chat" id="simChat"></div>
-      <div class="sim-quick">
-        <button onclick="sim('intro')">👋 你是谁</button>
-        <button onclick="sim('topics')">💡 帮我生成 3 个选题</button>
-        <button onclick="sim('write')">✍️ 帮我写一篇文章</button>
-        <button onclick="sim('review')">📊 做个复盘</button>
-      </div>
+      <div class="meta">收到 → 4.7 秒生成回复并送达（gateway 日志 14:35:58 / 14:36:05）</div>
     </div>
   </div>
-</section>
 
-<!-- ======== 能做/不能做 ======== -->
-<section>
-  <div class="container">
-    <h2 class="sec-title">能力边界</h2>
-    <p class="sec-desc">它把「边界」写进了岗位规范——哪些是它的职责，哪些坚决不碰。</p>
-    <div class="dual">
-      <div class="panel can">
-        <h3>✅ 它可以</h3>
-        <ul>
-          <li>选题：读定位与素材，生成候选选题，写清「讲什么 / 写给谁 / 解决什么问题 / 素材来源」</li>
-          <li>写稿：素材包 → 逐个访谈 → AI 初稿（3 个标题候选）→ 成稿 vN → 风格快检</li>
-          <li>配图：按规范写提示词、批量生成候选、只做机械检查，全部交作者质检</li>
-          <li>小红书文案：≤1000 字正文描述 + 10 个相关话题词</li>
-          <li>复盘：提醒发布 → 24h 后回填真实数据 → 轻复盘（只写现象和依据，不写因果）</li>
-          <li>遵守作者写作风格与校验记录，AI 味特别浓的表达全部清零</li>
-        </ul>
-      </div>
-      <div class="panel cant">
-        <h3>🚫 它坚决不做</h3>
-        <ul>
-          <li>不自动发布（发布永远是作者的人工动作）</li>
-          <li>不编造数据、案例、个人经历；不把 AI 的观点写成作者说的</li>
-          <li>不替作者判断图片质量（作者手动质检）</li>
-          <li>不替作者做选题三关的最终判断（AI 只提供素材和依据）</li>
-          <li>不覆盖原稿、不写「最终发布稿」类文件名，历史永远可追溯</li>
-          <li>不补写页面没有的数据、评论、来源；不把相关性写成因果</li>
-        </ul>
-      </div>
+  <!-- 六环节 -->
+  <section>
+    <div class="container">
+      <h2 class="sec-title">它按什么流程工作</h2>
+      <p class="sec-desc">点击每一环，看它在环节里做什么、遵守什么规则。这套流程来自作者真实工作流（2026-08-10 逐环节访谈挖掘）。</p>
+      <div class="steps" id="steps"></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ======== 规范与兜底 ======== -->
-<section>
-  <div class="container">
-    <h2 class="sec-title">它遵守什么规范</h2>
-    <p class="sec-desc">每个需要作者参与的节点，都是一道人工兜底闸门——AI 无能力或不该替人做的，一律停下交人。</p>
-    <div class="guard">
-      <h3>⏸ 必须停下来等作者（人工兜底 7 节点）</h3>
-      <div class="guard-tags">
-        <span>素材包确认</span>
-        <span>标题选定</span>
-        <span>成稿修改</span>
-        <span>图片质检</span>
-        <span>复盘候选选择</span>
-        <span>高风险内容核查</span>
-        <span>发布动作</span>
+  <!-- 能做/不能做 -->
+  <section>
+    <div class="container">
+      <h2 class="sec-title">能力边界</h2>
+      <p class="sec-desc">它把「边界」写进了岗位规范——哪些是它的职责，哪些坚决不碰。</p>
+      <div class="dual">
+        <div class="panel can">
+          <h3>✅ 它可以</h3>
+          <ul>
+            <li>选题：读定位与素材，生成候选选题，写清「讲什么 / 写给谁 / 解决什么问题 / 素材来源」</li>
+            <li>写稿：素材包 → 逐个访谈 → AI 初稿（3 个标题候选）→ 成稿 vN → 风格快检</li>
+            <li>配图：按规范写提示词、批量生成候选、只做机械检查，全部交作者质检</li>
+            <li>小红书文案：≤1000 字正文描述 + 10 个相关话题词</li>
+            <li>复盘：提醒发布 → 24h 后回填真实数据 → 轻复盘（只写现象和依据，不写因果）</li>
+            <li>遵守作者写作风格与校验记录，AI 味特别浓的表达全部清零</li>
+          </ul>
+        </div>
+        <div class="panel cant">
+          <h3>🚫 它坚决不做</h3>
+          <ul>
+            <li>不自动发布（发布永远是作者的人工动作）</li>
+            <li>不编造数据、案例、个人经历；不把 AI 的观点写成作者说的</li>
+            <li>不替作者判断图片质量（作者手动质检）</li>
+            <li>不替作者做选题三关的最终判断（AI 只提供素材和依据）</li>
+            <li>不覆盖原稿、不写「最终发布稿」类文件名，历史永远可追溯</li>
+            <li>不补写页面没有的数据、评论、来源；不把相关性写成因果</li>
+          </ul>
+        </div>
       </div>
-      <h3 style="margin-top:22px;">🔍 质量自检（交稿前）</h3>
-      <div class="guard-tags">
-        <span>访谈只整理语序，不增加作者没说过的观点</span>
-        <span>成稿 vN 递增，原稿不动</span>
-        <span>快检 P0-P2 清零才交稿</span>
-        <span>未验证素材标「⚠️ 待验证」不进正文</span>
-        <span>tag 只选相关内容</span>
-        <span>第一人称内容可追溯到访谈原话</span>
-      </div>
-      <p class="note">完整规范：<b>岗位卡 + 工作流卡片 + Agent Profile（04-Profile.md）</b> 三个文档，作者本人长期迭代，随实际使用更新。</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ======== 技术栈 ======== -->
-<section>
-  <div class="container">
-    <h2 class="sec-title">它由什么构成</h2>
-    <p class="sec-desc">不用夸张的大模型堆料——用趁手的工具编排成一套可复制的岗位。</p>
-    <div class="stack">
-      <div class="pill"><span class="dot"></span><b>Hermes</b>　Agent 本体 + 飞书网关（24h 在线）</div>
-      <div class="pill"><span class="dot"></span><b>Claude Code</b>　写稿技能执行端（选题 / 规律 / 写作 / 检查 / 复盘）</div>
-      <div class="pill"><span class="dot"></span><b>DeepSeek v4-flash</b>　模型推理</div>
-      <div class="pill"><span class="dot"></span><b>飞书开放平台</b>　消息与文件</div>
-      <div class="pill"><span class="dot"></span><b>lark-cli</b>　飞书表格 / 文档 / 多维表格操作</div>
+  <!-- 规范与兜底 -->
+  <section>
+    <div class="container">
+      <h2 class="sec-title">它遵守什么规范</h2>
+      <p class="sec-desc">每个需要作者参与的节点，都是一道人工兜底闸门——AI 无能力或不该替人做的，一律停下交人。</p>
+      <div class="guard">
+        <h3>⏸ 必须停下来等作者（人工兜底 7 节点）</h3>
+        <div class="guard-tags">
+          <span>素材包确认</span>
+          <span>标题选定</span>
+          <span>成稿修改</span>
+          <span>图片质检</span>
+          <span>复盘候选选择</span>
+          <span>高风险内容核查</span>
+          <span>发布动作</span>
+        </div>
+        <h3 style="margin-top:22px;">🔍 质量自检（交稿前）</h3>
+        <div class="guard-tags">
+          <span>访谈只整理语序，不增加作者没说过的观点</span>
+          <span>成稿 vN 递增，原稿不动</span>
+          <span>快检 P0-P2 清零才交稿</span>
+          <span>未验证素材标「⚠️ 待验证」不进正文</span>
+          <span>tag 只选相关内容</span>
+          <span>第一人称内容可追溯到访谈原话</span>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- 技术栈 -->
+  <section>
+    <div class="container">
+      <h2 class="sec-title">它由什么构成</h2>
+      <p class="sec-desc">不用夸张的大模型堆料——用趁手的工具编排成一套可复制的岗位。</p>
+      <div class="stack">
+        <div class="pill"><span class="dot"></span><b>Hermes</b>　Agent 本体 + 飞书网关（24h 在线）</div>
+        <div class="pill"><span class="dot"></span><b>Claude Code</b>　写稿技能执行端（选题 / 规律 / 写作 / 检查 / 复盘）</div>
+        <div class="pill"><span class="dot"></span><b>DeepSeek v4-flash</b>　模型推理</div>
+        <div class="pill"><span class="dot"></span><b>飞书开放平台</b>　消息与文件</div>
+        <div class="pill"><span class="dot"></span><b>lark-cli</b>　飞书表格 / 文档 / 多维表格操作</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ======== 面板二：训练营介绍 ======== -->
+<div id="panel-camp" class="tab-panel">
+
+  <section>
+    <div class="container">
+      <div class="camp-hero">
+        <img src="frog-hero.png" alt="小蛙" class="camp-frog">
+        <h2>打造第二大脑Agent，成为Agent架构师</h2>
+        <p class="sub">每天 2 小时，共 6 天时间，手把手带你打造个人知识库——AI 第二大脑，构建内容创作系统，成为 Agent 架构师。</p>
+      </div>
+
+      <h2 class="sec-title" style="margin-top:36px;">我先说它现在长什么样</h2>
+      <p>我给自己搭了一个 AI 员工，24 小时在飞书里在线。</p>
+      <p>AI 员工不仅仅是一个聊天机器人，它带有我个人的整套工作流程。</p>
+      <p>我只需要跟它说：「帮我写《XX》」，它就走完「选题 → 规律 → 写作 → 配图 → 小红书文案 → 复盘」六环节，把一篇文章从想法推到排好版。每个需要我拍板的节点——素材包、标题、成稿、配图、复盘——它都停下来等我，绝不擅自往前。</p>
+      <p>从最初让 AI 访谈我、把我脑子里的判断一条条挖出来，到生成第一张岗位卡，再到整套系统跑通，我一共花了半个多月时间。也是我一年多以来用 AI 写东西、整理我的知识库的工作流沉淀。</p>
+
+      <h2 class="sec-title" style="margin-top:36px;">这 6 天，带你搭出三样东西</h2>
+      <div class="camp-card">
+        <h3>第一样：个人知识库，也就是你的 AI 第二大脑</h3>
+        <p>把日常沟通、想法、会议记录、看到的课程、文章……经过清洗、沉淀，放进自己的知识库。</p>
+        <p>沉淀下来的是你自己的数据资产：写文章、开会、做决策，都从里面取。它解决「装了 AI 工具不知道拿来干什么」——这是人人用得起来、最快见效的 AI 场景，也是后面所有东西的原料库。</p>
+      </div>
+      <div class="camp-card">
+        <h3>第二样：内容创作系统</h3>
+        <p>六个环节，每个环节一套规矩：选题从选题池里挑，规律从对标内容里提炼，写作走素材包 → 访谈 → 初稿 → 成稿的流程，配图批量生成后由你质检，发布文案自动附带，发布后自动复盘。</p>
+        <p>一篇文章从想法到成稿，全程有流程、有版本、有记录。</p>
+      </div>
+      <div class="camp-card">
+        <h3>第三样：你的第一张岗位卡，和一个 Agent 工作流</h3>
+        <p>这是「Agent 架构师」的核心手艺：把你自己（或你的团队）的做事流程，梳理成 AI 能执行的规矩。岗位卡里写清什么算干得好、什么不许干、什么情况必须停下来问人。</p>
+        <p>有了它，你不只会搭内容系统——任何流程，都能照这个方法变成 AI 员工。</p>
+      </div>
+
+      <h2 class="sec-title" style="margin-top:36px;">训练营怎么带：八步法</h2>
+      <p>这套系统是这么搭起来的，6 天里我带你走同样八步。</p>
+      <div class="camp-step"><div class="num">1</div><div class="body"><b>写岗位卡</b><span>它是 AI 员工的劳动合同：岗位、职责、成功标准、不做清单。最花时间的两个地方是「成功标准」和「不做清单」，边界清楚了，AI 才不会乱来。</span></div></div>
+      <div class="camp-step"><div class="num">2</div><div class="body"><b>挖出自己的判断</b><span>最值钱的部分。我让 AI 逐环节问我：选选题凭什么拍板？改稿第一眼找什么？挖出来落成文档，每样记三笔：我的判断、判断依据、AI 将来该怎么判断。只有步骤没有判断的 AI 员工，遇到流程外的事会抓瞎。</span></div></div>
+      <div class="camp-step"><div class="num">3</div><div class="body"><b>拆出人工流程</b><span>人干活很多动作是下意识的，不拆出来，AI 不知道有这一步。</span></div></div>
+      <div class="camp-step"><div class="num">4</div><div class="body"><b>画流程图</b><span>把判断节点标出来，橙色的都是必须停下来交给人确认的地方。哪里会走错，一眼看出。</span></div></div>
+      <div class="camp-step"><div class="num">5</div><div class="body"><b>装进 skill</b><span>一个环节一个技能，每个技能写清楚停顿点。技能的边界要小，AI 才不容易串台。</span></div></div>
+      <div class="camp-step"><div class="num">6</div><div class="body"><b>拿真实工作跑</b><span>我拿一篇真实文章跑进去，改到第十二版。快检从十几分钟改成一两分钟；写出来的东西机器味浓，找到原因是约束太多、AI 过度执行——这些都是真跑出来才知道的坑。</span></div></div>
+      <div class="camp-step"><div class="num">7</div><div class="body"><b>复盘迭代</b><span>第一篇发布后数据回来了：点击高、没人收藏。复盘发现全文没有一个能带走的东西，读者想收藏都不知道存什么。下一篇就改，正文直接放可复制的提示词。</span></div></div>
+      <div class="camp-step"><div class="num">8</div><div class="body"><b>汇总成工作流</b><span>迭代得差不多了，把岗位卡和判断沉淀抽象成一份 AI 能执行的工作流：哪些必须做、哪些禁止做、哪些停下来问人，标得清清楚楚。</span></div></div>
+      <p>每一步的提示词，训练营里直接给你，可以直接拿来用。</p>
+
+      <h2 class="sec-title" style="margin-top:36px;">这 6 天怎么安排</h2>
+      <table class="camp-table">
+        <thead>
+          <tr><th>天</th><th>内容</th><th>对应八步</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>第 1 天</td><td>环境准备 + 搭个人知识库（记录 → 清洗沉淀 → 复用）</td><td>前置</td></tr>
+          <tr><td>第 2 天</td><td>写岗位卡 + AI 访谈挖你自己的判断</td><td>一、二</td></tr>
+          <tr><td>第 3 天</td><td>拆人工流程 + 画流程图</td><td>三、四</td></tr>
+          <tr><td>第 4 天</td><td>把流程装进 skill（一个环节一个）</td><td>五</td></tr>
+          <tr><td>第 5 天</td><td>拿一篇真实文章跑通 + 复盘数据</td><td>六、七</td></tr>
+          <tr><td>第 6 天</td><td>汇总成 Agent 工作流 + 答疑收尾</td><td>八</td></tr>
+        </tbody>
+      </table>
+
+      <h2 class="sec-title" style="margin-top:36px;">我的使用说明书</h2>
+      <p>大家好，我是一心，前高德地图解决方案架构师，在金融科技、零售行业干了 10 多年，角色是甲方业务和技术之间的桥梁；现在是 AI 原生创业公司的创始人，公司全部业务交给 AI Agent，每人都有自己的 AI 员工。曾经帮我的客户（一百多号员工的乡村运营企业）梳理过哪些业务适合搭 Agent 提效。</p>
+      <p>上面这套系统，是我自己从零搭起来、每天都在用的。</p>
+      <p>我能带给你的，是三样东西：</p>
+      <div class="camp-card">
+        <h3>一套已经验证过的方法</h3>
+        <p>岗位卡、判断挖掘、skill 封装、复盘迭代——每一步我都踩过坑、修过路。你不需要再从零摸索一遍，照着走就行。</p>
+      </div>
+      <div class="camp-card">
+        <h3>一份能直接抄的作业</h3>
+        <p>六环节的提示词、岗位卡模板、工作流格式，训练营里全部给你，照着填你自己的内容。</p>
+      </div>
+      <div class="camp-card">
+        <h3>一双既懂业务又懂技术的眼睛</h3>
+        <p>架构师干了 10 多年，自己创业又用了一年多 AI，我知道怎么把「AI 能干什么」翻译成你工作里的话——也知道诚实告诉你边界：哪些 AI 能替你干，哪些必须你拍板。</p>
+      </div>
+
+      <h2 class="sec-title" style="margin-top:36px;">适合谁</h2>
+      <ul class="who-list">
+        <li>内容创作者、小团队经营者：想让 AI 帮你把内容生产真正跑起来</li>
+        <li>企业创始人：想先把自己用起来，再带动公司用 AI</li>
+        <li>装了 AI 工具、但不知道能拿来干什么的人</li>
+      </ul>
+      <div class="notice">
+        如果你期待的是「一键生成爆款文章」，这不适合你。这套系统里，选题、素材验证、图片质检、发布，全部是人工拍板。AI 干执行，人干判断。这正是它能长期跑的原因，也是训练营不承诺「零人工」的原因。
+      </div>
+
+      <div class="camp-frog-footer">
+        <img src="frog-footer.png" alt="小蛙">
+        <p>🐸 不合理蛙AI学社 · 打造第二大脑Agent</p>
+      </div>
+    </div>
+  </section>
+
+</div>
 
 <!-- ======== 页脚 ======== -->
 <footer>
   <div class="container">
-    <div class="demo-tip">⚠️ 本页为演示页面：模拟器不连接真实 Agent，不接入任何 API，不含任何真实选题、素材与数据。真实 Agent 仅在作者飞书内可用，他人无法调用。</div>
+    <div class="demo-tip">⚠️ 本页为演示页面：不连接真实 Agent，不接入任何 API，不含任何真实选题、素材与数据。真实 Agent 仅在作者飞书内可用，他人无法调用。</div>
     <p><b>AI自媒体运营助手</b> · 不合理蛙AI学社数字员工 · 2026-08-17 搭建</p>
     <p>页面为纯静态展示，无后端、无网络请求、无追踪脚本。</p>
   </div>
@@ -443,83 +529,14 @@ STEPS.forEach(s => {
   stepsEl.appendChild(card);
 });
 
-/* ================= 模拟器（纯前端演示脚本，无任何 API） ================= */
-const chat = document.getElementById("simChat");
-const CHAT = {
-  intro: [
-    { st: "来自岗位定位", txt: "你好！我是「AI自媒体运营助手」——不合理蛙AI学社的数字员工。我在作者的飞书里 24 小时在线。" },
-    { st: "我能做", txt: "你只要说一句「帮我写《…》」「生成选题」或「做个复盘」，我就按六环节推进：选题 → 规律 → 写作 → 配图 → 小红书文案 → 复盘。每个需要拍板的节点，我都会停下来等你。" },
-    { st: "边界", txt: "我不会自动发布、不编造数据和经历、不替作者判断图片质量——这些是写进岗位规范的红线。" },
-  ],
-  topics: [
-    { st: "① 读取定位", txt: "正在读取账号定位总览：目标用户是「想用 AI 提效的职场人、内容创作者、小团队经营者」……" },
-    { st: "② 读取素材库", txt: "正在扫描内容素材库：思想卡片 12 张、访谈记录 3 份、对标采集 26 条……（此处为演示数据）" },
-    { st: "③ 生成候选选题", txt: "以下是 3 个候选选题（每个都写清讲什么 / 写给谁 / 解决什么问题 / 素材来源）：\n1. 《把会议纪要交给 AI 的 30 分钟》——写给被会议淹没的职场人，示范 AI 整理纪要的完整流程，素材来源：采访记录。\n2. 《零基础用 AI 搭一个日报系统》——写给想给团队提效的小团队经营者，讲清工具选择与落地步骤，素材来源：操作经验。\n3. 《为什么我用 AI 从不「一键生成」》——写给受 AI 味困扰的创作者，讲判断与改稿方法，素材来源：写作方法论。\n\n（以上为演示示例选题，非真实选题池内容）" },
-    { st: "④ 等确认", txt: "请你拍板：选哪个？或者告诉我想调整的方向。选题决策是人的，我只提供候选和依据。" },
-  ],
-  write: [
-    { st: "① 建素材包", txt: "好，写《把会议纪要交给 AI 的 30 分钟》。先建素材包：定位 ✓ 选题 ✓ 来源文件 ✓ 可用规律 ✓ 四项都齐了。" },
-    { st: "② 访谈（等确认）", txt: "写之前我需要问你 3 个问题，一次一个——这是为了让文章里有【你的】真实判断，而不是我的套话：\n\n第 1 问：你第一次把会议纪要交给 AI 时，最担心的是什么？实际结果如何？" },
-    { st: "③ 提示", txt: "你回答后我会继续追问，然后出初稿（附 3 个标题候选），再停下等你改稿。整条链路里，我不会在你没确认前往下走。" },
-  ],
-  review: [
-    { st: "① 建复盘文件", txt: "收到。我先建复盘文件，关联这篇文章的素材包、成稿和发布时间。" },
-    { st: "② 提醒发布", txt: "如果这篇文章还没发布：请你先发布，然后我们约定 24 小时后回来填数据——我只记录页面上真实显示的数字，不补写、不猜测。" },
-    { st: "③ 轻复盘框架", txt: "24 小时后我会按这个框架做轻复盘：\n· 已确认事实（数据原样）\n· 初步观察（现象，不写成因）\n· 还不能判断（数据不足的部分明确标出）\n· 最多 3 个候选动作（每个写清直接依据），由你拍板\n\n（以上为演示流程，未连接真实数据）" },
-  ],
-};
-let busy = false;
-function addMsg(role, st, txt) {
-  const row = document.createElement("div");
-  row.className = "sim-msg " + role;
-  const av = document.createElement("div");
-  av.className = "av";
-  av.textContent = role === "user" ? "我" : "媒";
-  const bub = document.createElement("div");
-  bub.className = "bub";
-  if (st) { const s = document.createElement("span"); s.className = "st"; s.textContent = st; bub.appendChild(s); }
-  const lines = txt.split("\n");
-  lines.forEach((l, i) => {
-    const p = document.createElement("div");
-    p.innerHTML = l.replace(/`([^`]+)`/g, '<span class="hl">$1</span>').replace(/\*\*(.+?)\*\*/g, "<b>$1</b>") || "&nbsp;";
-    bub.appendChild(p);
-  });
-  row.appendChild(av); row.appendChild(bub);
-  chat.appendChild(row);
-  chat.scrollTop = chat.scrollHeight;
-}
-function showTyping() {
-  const row = document.createElement("div");
-  row.className = "sim-msg bot";
-  row.innerHTML = '<div class="av">媒</div><div class="typing"><span></span><span></span><span></span></div>';
-  row.id = "typingRow";
-  chat.appendChild(row);
-  chat.scrollTop = chat.scrollHeight;
-}
-function hideTyping() { const t = document.getElementById("typingRow"); if (t) t.remove(); }
-const wait = ms => new Promise(r => setTimeout(r, ms));
-async function sim(key) {
-  if (busy) return; busy = true;
-  const script = CHAT[key];
-  addMsg("user", null, promptText(key));
-  for (let i = 0; i < script.length; i++) {
-    await wait(500 + Math.random() * 500);
-    showTyping();
-    await wait(900 + Math.random() * 700);
-    hideTyping();
-    addMsg("bot", script[i].st, script[i].txt);
-  }
-  busy = false;
-}
-function promptText(key) {
-  return { intro: "你是谁？", topics: "帮我生成 3 个选题", write: "帮我写一篇文章", review: "给刚发布的文章做个复盘" }[key];
-}
-/* 开场白 */
-wait(400).then(() => {
-  showTyping();
-  wait(1100).then(() => {
-    hideTyping();
-    addMsg("bot", "演示就绪", "点下面的快捷指令，看我是怎么干活的（纯前端演示，不接任何真实服务）。");
+/* ================= tab 切换 ================= */
+document.querySelectorAll(".tab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("panel-" + btn.dataset.tab).classList.add("active");
+    window.scrollTo({ top: 0 });
   });
 });
 </script>
