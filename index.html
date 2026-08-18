@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI自媒体运营助手 · 不合理蛙AI学社数字员工</title>
+<meta name="description" content="不合理蛙AI学社的数字员工「AI自媒体运营助手」：在飞书里说一句话，它按六环节推进内容生产，每个关键节点都停下来等你拍板。本页为演示。">
+<style>
+  :root {
+    --orange: #FFA600;
+    --orange-deep: #FF8A65;
+    --orange-soft: #FFD54F;
+    --stroke: #FFD98A;
+    --bg-soft: #FFF6E0;
+    --green: #4CAF50;
+    --pink: #FFD1DC;
+    --text: #333333;
+    --text-light: #8a8a8a;
+    --line: #E6E6E6;
+    --radius-s: 12px;
+    --radius-m: 14px;
+    --radius-l: 20px;
+    --radius-xl: 28px;
+    --font-cn: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    --font-en: "Inter", "SF Pro Text", -apple-system, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-cn);
+    color: var(--text);
+    background: #FFFFFF;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background: linear-gradient(135deg, #FFA600, #FFD54F, #FFE9A8);
+    border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+    padding: 72px 0 88px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #FFFFFF; color: #B36B00;
+    font-size: 13px; font-weight: 700;
+    padding: 7px 16px; border-radius: 999px;
+    box-shadow: 0 6px 18px rgba(255,255,255,.4);
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-size: 42px; font-weight: 900; letter-spacing: 1px;
+    max-width: 720px; line-height: 1.3; color: #333333;
+  }
+  .hero .sub {
+    font-size: 18px; margin-top: 18px; max-width: 640px; color: #5c4a00;
+    font-weight: 500;
+  }
+  .hero .chips { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .hero .chip {
+    background: rgba(255,255,255,.85); color: #7a5a00;
+    padding: 8px 18px; border-radius: 999px; font-size: 14px; font-weight: 600;
+    box-shadow: 0 6px 18px rgba(255,255,255,.4);
+  }
+
+  /* ---------- 通用区块 ---------- */
+  section { padding: 72px 0 8px; }
+  .sec-title {
+    font-size: 30px; font-weight: 900; margin-bottom: 8px; letter-spacing: .5px;
+  }
+  .sec-desc { color: var(--text-light); font-size: 15px; margin-bottom: 32px; max-width: 720px; }
+
+  /* ---------- 真实对话回放 ---------- */
+  .replay {
+    margin-top: -56px; background: #FFFFFF; border-radius: var(--radius-l);
+    padding: 28px;
+    border: 1.5px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 0 8px 24px rgba(255,166,0,.14), 0 2px 8px rgba(255,166,0,.06);
+    position: relative;
+  }
+  .replay::before {
+    content: ""; position: absolute; inset: 0; border-radius: var(--radius-l);
+    padding: 1.5px; background: linear-gradient(135deg, #FFD98A, #FFB84D, #FF8A65);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+  }
+  .replay .tag {
+    display: inline-block; background: var(--bg-soft); color: #B36B00;
+    font-size: 13px; font-weight: 700; padding: 5px 14px; border-radius: 999px; margin-bottom: 16px;
+  }
+  .replay .row { display: flex; gap: 14px; margin-bottom: 14px; align-items: flex-start; }
+  .replay .avatar {
+    width: 36px; height: 36px; border-radius: 999px; flex: none;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 800; color: #fff;
+  }
+  .replay .avatar.user { background: linear-gradient(135deg, #8a8a8a, #666); }
+  .replay .avatar.bot { background: linear-gradient(135deg, var(--orange), var(--orange-deep)); }
+  .replay .bubble {
+    background: #F7F7F7; border-radius: 6px 16px 16px 16px; padding: 12px 16px;
+    max-width: 86%; font-size: 15px;
+  }
+  .replay .bubble.user { background: var(--bg-soft); border-radius: 16px 6px 16px 16px; }
+  .replay .meta { font-size: 12px; color: var(--text-light); margin-top: 10px; }
+
+  /* ---------- 六环节 ---------- */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .step-card {
+    background: #FFFFFF; border: 1.5px solid var(--line); border-radius: var(--radius-l);
+    padding: 22px; cursor: pointer; transition: all .2s ease; position: relative;
+  }
+  .step-card:hover { border-color: transparent; transform: translateY(-3px); }
+  .step-card:hover::before {
+    content: ""; position: absolute; inset: 0; border-radius: var(--radius-l);
+    padding: 1.5px; background: linear-gradient(135deg, #FFD98A, #FFB84D, #FF8A65);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+  }
+  .step-card:hover { box-shadow: 0 16px 36px rgba(255,166,0,.22), 0 4px 12px rgba(255,166,0,.10); }
+  .step-num {
+    width: 34px; height: 34px; border-radius: 999px; margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--orange), var(--orange-deep));
+    color: #fff; font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 15px;
+  }
+  .step-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 6px; }
+  .step-card .brief { font-size: 13.5px; color: var(--text-light); }
+  .step-detail {
+    display: none; margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line);
+    font-size: 13.5px; color: #555;
+  }
+  .step-card.open .step-detail { display: block; }
+  .step-detail ul { padding-left: 18px; }
+  .step-detail li { margin-bottom: 4px; }
+  .step-detail b { color: var(--text); }
+
+  /* ---------- 模拟器 ---------- */
+  .sim-wrap {
+    background: linear-gradient(135deg, rgba(255,166,0,.06), rgba(255,216,96,.10));
+    border-radius: var(--radius-xl); padding: 34px;
+  }
+  .sim-head { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+  .sim-head .avatar { width: 44px; height: 44px; border-radius: 999px; background: linear-gradient(135deg, var(--orange), var(--orange-deep)); color: #fff; font-size: 20px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .sim-head .name { font-weight: 800; font-size: 16px; }
+  .sim-head .status { font-size: 12.5px; color: var(--green); font-weight: 600; }
+  .sim-head .status::before { content: "● "; }
+  .sim-note { font-size: 12.5px; color: var(--text-light); margin-bottom: 16px; }
+  .sim-chat {
+    background: #FFFFFF; border-radius: var(--radius-l);
+    min-height: 380px; max-height: 520px; overflow-y: auto;
+    padding: 22px; margin-bottom: 16px;
+    border: 1.5px solid var(--line);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .sim-msg { display: flex; gap: 10px; align-items: flex-end; animation: fadeUp .3s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .sim-msg .av { width: 28px; height: 28px; border-radius: 999px; flex: none; color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .sim-msg.user { justify-content: flex-end; }
+  .sim-msg.user .av { background: #888; order: 2; }
+  .sim-msg.bot .av { background: linear-gradient(135deg, var(--orange), var(--orange-deep)); }
+  .sim-msg .bub { background: #F5F5F5; border-radius: 6px 16px 16px 16px; padding: 11px 15px; max-width: 78%; font-size: 14.5px; }
+  .sim-msg.user .bub { background: var(--bg-soft); border-radius: 16px 6px 16px 16px; }
+  .sim-msg .bub .st { color: var(--text-light); font-size: 12px; display: block; margin-bottom: 2px; }
+  .sim-msg .bub pre { background: #FFF9EC; border-radius: var(--radius-s); padding: 10px 12px; font-family: var(--font-cn); font-size: 13px; line-height: 1.7; white-space: pre-wrap; margin: 8px 0; }
+  .sim-msg .bub .hl { color: #B36B00; font-weight: 700; }
+  .typing { display: inline-flex; gap: 5px; padding: 12px 16px; background: #F5F5F5; border-radius: 6px 16px 16px 16px; }
+  .typing span { width: 7px; height: 7px; border-radius: 50%; background: #ccc; animation: blink 1.2s infinite; }
+  .typing span:nth-child(2) { animation-delay: .2s; }
+  .typing span:nth-child(3) { animation-delay: .4s; }
+  @keyframes blink { 0%, 80%, 100% { opacity: .25; } 40% { opacity: 1; } }
+  .sim-quick { display: flex; flex-wrap: wrap; gap: 10px; }
+  .sim-quick button {
+    background: #FFFFFF; border: 1.5px solid var(--stroke); color: #B36B00;
+    border-radius: 999px; padding: 8px 18px; font-size: 14px; font-weight: 700; cursor: pointer;
+    font-family: var(--font-cn); transition: all .2s;
+  }
+  .sim-quick button:hover { background: linear-gradient(135deg, var(--orange), var(--orange-deep)); color: #fff; border-color: transparent; box-shadow: 0 6px 16px rgba(255,166,0,.35); }
+
+  /* ---------- 能做/不能做 ---------- */
+  .dual { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .panel { border-radius: var(--radius-l); padding: 26px; }
+  .panel.can { background: var(--bg-soft); border: 1.5px solid var(--stroke); }
+  .panel.cant { background: #FFF9F9; border: 1.5px solid #F3D0D0; }
+  .panel h3 { font-size: 18px; font-weight: 800; margin-bottom: 16px; }
+  .panel ul { list-style: none; }
+  .panel li { padding: 7px 0 7px 28px; position: relative; font-size: 14.5px; }
+  .panel li::before { position: absolute; left: 2px; top: 7px; font-size: 15px; }
+  .panel.can li::before { content: "✓"; color: var(--green); font-weight: 800; }
+  .panel.cant li::before { content: "✕"; color: #E57373; font-weight: 800; }
+
+  /* ---------- 规范与兜底 ---------- */
+  .guard { background: #FFFFFF; border: 1.5px solid var(--line); border-radius: var(--radius-l); padding: 26px; }
+  .guard h3 { font-size: 17px; font-weight: 800; margin-bottom: 14px; }
+  .guard-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
+  .guard-tags span {
+    background: var(--bg-soft); border: 1px solid var(--stroke); color: #8a6200;
+    padding: 6px 14px; border-radius: 999px; font-size: 13.5px; font-weight: 600;
+  }
+  .guard .note { font-size: 13px; color: var(--text-light); margin-top: 12px; }
+  .guard .note b { color: var(--text); }
+
+  /* ---------- 技术栈 ---------- */
+  .stack { display: flex; flex-wrap: wrap; gap: 14px; }
+  .stack .pill {
+    background: #FFFFFF; border: 1.5px solid var(--line); border-radius: 999px;
+    padding: 10px 20px; font-size: 14.5px; font-weight: 600;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .stack .pill b { color: #B36B00; }
+  .stack .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+
+  /* ---------- 页脚 ---------- */
+  footer { margin-top: 80px; background: #333333; color: #ccc; border-radius: var(--radius-xl) var(--radius-xl) 0 0; padding: 40px 0 48px; }
+  footer .container { display: flex; flex-direction: column; gap: 10px; }
+  footer .demo-tip { font-size: 13.5px; color: #FFD98A; font-weight: 600; }
+  footer p { font-size: 13px; color: #aaa; }
+  footer b { color: #fff; }
+
+  @media (max-width: 760px) {
+    .hero h1 { font-size: 30px; }
+    .steps, .dual { grid-template-columns: 1fr; }
+    .replay .bubble { max-width: 100%; }
+    section { padding-top: 56px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ======== Hero ======== -->
+<header class="hero">
+  <div class="container">
+    <span class="badge">🐸 不合理蛙AI学社 · 数字员工</span>
+    <h1>AI自媒体运营助手</h1>
+    <p class="sub">在飞书里说一句「帮我写《…》」，它按「选题 → 规律 → 写作 → 配图 → 小红书文案 → 复盘」六个环节帮你把内容生产跑完——每个需要拍板的节点，它都停下来等你。</p>
+    <div class="chips">
+      <span class="chip">✅ 六环节闭环</span>
+      <span class="chip">⏸ 每个节点等确认</span>
+      <span class="chip">🚫 永不自动发布</span>
+      <span class="chip">📊 发布后 24h 回填复盘</span>
+    </div>
+  </div>
+</header>
+
+<!-- ======== 真实对话回放 ======== -->
+<div class="container">
+  <div class="replay">
+    <span class="tag">真实对话回放 · 2026-08-17 实测（飞书私聊）</span>
+    <div class="row">
+      <div class="avatar user">我</div>
+      <div class="bubble user">你好</div>
+    </div>
+    <div class="row">
+      <div class="avatar bot">媒</div>
+      <div class="bubble">
+        你好！我是你的 AI 自媒体运营助手 👋<br>
+        随时可以开始内容生产，比如：<br><br>
+        · <b>写文章</b>：给我选题，我按六环节推进，每个需要你确认的节点都会停下来等你<br>
+        · <b>生成选题</b>：读定位和素材，往选题池里补充候选<br>
+        · <b>复盘</b>：发布后 24 小时回填数据做轻复盘
+      </div>
+    </div>
+    <div class="meta">收到 → 4.7 秒生成回复并送达（gateway 日志 14:35:58 / 14:36:05）</div>
+  </div>
+</div>
+
+<!-- ======== 六环节 ======== -->
+<section>
+  <div class="container">
+    <h2 class="sec-title">它按什么流程工作</h2>
+    <p class="sec-desc">点击每一环，看它在环节里做什么、遵守什么规则。这套流程来自作者真实工作流（2026-08-10 逐环节访谈挖掘）。</p>
+    <div class="steps" id="steps"></div>
+  </div>
+</section>
+
+<!-- ======== 模拟器 ======== -->
+<section>
+  <div class="container">
+    <h2 class="sec-title">试试和它对话</h2>
+    <p class="sec-desc">下面的对话框是<b>前端演示模拟器</b>：回复脚本为演示用途手工编写，不连接真实 Agent 和任何 API，不包含任何真实数据。点击快捷指令体验它的工作方式。</p>
+    <div class="sim-wrap">
+      <div class="sim-head">
+        <div class="avatar">媒</div>
+        <div>
+          <div class="name">AI自媒体运营助手</div>
+          <div class="status">演示模式</div>
+        </div>
+      </div>
+      <p class="sim-note">真实版本运行在作者的飞书里，点击快捷指令体验演示流程。</p>
+      <div class="sim-chat" id="simChat"></div>
+      <div class="sim-quick">
+        <button onclick="sim('intro')">👋 你是谁</button>
+        <button onclick="sim('topics')">💡 帮我生成 3 个选题</button>
+        <button onclick="sim('write')">✍️ 帮我写一篇文章</button>
+        <button onclick="sim('review')">📊 做个复盘</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== 能做/不能做 ======== -->
+<section>
+  <div class="container">
+    <h2 class="sec-title">能力边界</h2>
+    <p class="sec-desc">它把「边界」写进了岗位规范——哪些是它的职责，哪些坚决不碰。</p>
+    <div class="dual">
+      <div class="panel can">
+        <h3>✅ 它可以</h3>
+        <ul>
+          <li>选题：读定位与素材，生成候选选题，写清「讲什么 / 写给谁 / 解决什么问题 / 素材来源」</li>
+          <li>写稿：素材包 → 逐个访谈 → AI 初稿（3 个标题候选）→ 成稿 vN → 风格快检</li>
+          <li>配图：按规范写提示词、批量生成候选、只做机械检查，全部交作者质检</li>
+          <li>小红书文案：≤1000 字正文描述 + 10 个相关话题词</li>
+          <li>复盘：提醒发布 → 24h 后回填真实数据 → 轻复盘（只写现象和依据，不写因果）</li>
+          <li>遵守作者写作风格与校验记录，AI 味特别浓的表达全部清零</li>
+        </ul>
+      </div>
+      <div class="panel cant">
+        <h3>🚫 它坚决不做</h3>
+        <ul>
+          <li>不自动发布（发布永远是作者的人工动作）</li>
+          <li>不编造数据、案例、个人经历；不把 AI 的观点写成作者说的</li>
+          <li>不替作者判断图片质量（作者手动质检）</li>
+          <li>不替作者做选题三关的最终判断（AI 只提供素材和依据）</li>
+          <li>不覆盖原稿、不写「最终发布稿」类文件名，历史永远可追溯</li>
+          <li>不补写页面没有的数据、评论、来源；不把相关性写成因果</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== 规范与兜底 ======== -->
+<section>
+  <div class="container">
+    <h2 class="sec-title">它遵守什么规范</h2>
+    <p class="sec-desc">每个需要作者参与的节点，都是一道人工兜底闸门——AI 无能力或不该替人做的，一律停下交人。</p>
+    <div class="guard">
+      <h3>⏸ 必须停下来等作者（人工兜底 7 节点）</h3>
+      <div class="guard-tags">
+        <span>素材包确认</span>
+        <span>标题选定</span>
+        <span>成稿修改</span>
+        <span>图片质检</span>
+        <span>复盘候选选择</span>
+        <span>高风险内容核查</span>
+        <span>发布动作</span>
+      </div>
+      <h3 style="margin-top:22px;">🔍 质量自检（交稿前）</h3>
+      <div class="guard-tags">
+        <span>访谈只整理语序，不增加作者没说过的观点</span>
+        <span>成稿 vN 递增，原稿不动</span>
+        <span>快检 P0-P2 清零才交稿</span>
+        <span>未验证素材标「⚠️ 待验证」不进正文</span>
+        <span>tag 只选相关内容</span>
+        <span>第一人称内容可追溯到访谈原话</span>
+      </div>
+      <p class="note">完整规范：<b>岗位卡 + 工作流卡片 + Agent Profile（04-Profile.md）</b> 三个文档，作者本人长期迭代，随实际使用更新。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======== 技术栈 ======== -->
+<section>
+  <div class="container">
+    <h2 class="sec-title">它由什么构成</h2>
+    <p class="sec-desc">不用夸张的大模型堆料——用趁手的工具编排成一套可复制的岗位。</p>
+    <div class="stack">
+      <div class="pill"><span class="dot"></span><b>Hermes</b>　Agent 本体 + 飞书网关（24h 在线）</div>
+      <div class="pill"><span class="dot"></span><b>Claude Code</b>　写稿技能执行端（选题 / 规律 / 写作 / 检查 / 复盘）</div>
+      <div class="pill"><span class="dot"></span><b>DeepSeek v4-flash</b>　模型推理</div>
+      <div class="pill"><span class="dot"></span><b>飞书开放平台</b>　消息与文件</div>
+      <div class="pill"><span class="dot"></span><b>lark-cli</b>　飞书表格 / 文档 / 多维表格操作</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== 页脚 ======== -->
+<footer>
+  <div class="container">
+    <div class="demo-tip">⚠️ 本页为演示页面：模拟器不连接真实 Agent，不接入任何 API，不含任何真实选题、素材与数据。真实 Agent 仅在作者飞书内可用，他人无法调用。</div>
+    <p><b>AI自媒体运营助手</b> · 不合理蛙AI学社数字员工 · 2026-08-17 搭建</p>
+    <p>页面为纯静态展示，无后端、无网络请求、无追踪脚本。</p>
+  </div>
+</footer>
+
+<script>
+/* ================= 六环节数据 ================= */
+const STEPS = [
+  { n: "①", t: "选题", b: "读定位与素材，生成候选选题，写清讲什么/写给谁/解决什么问题/素材来源。",
+    d: "素材充足生成 5-10 个，不足宁少不硬凑。不优化标题、不生成正文、同问题去重。三关筛选（流量 / 定位 / 日常工作）由作者判断，AI 只提供素材与依据。" },
+  { n: "②", t: "规律", b: "从对标素材提炼标题/开头/正文结构规律，≥2 条素材证据才算候选规律。",
+    d: "写作时从规律里挑适用项；缺作者没有的数字/案例就换一条，绝不套公式改事实。" },
+  { n: "③", t: "写作", b: "素材包 → 逐个访谈 → AI 初稿（3 个标题候选）→ 成稿 vN → 风格快检。",
+    d: "访谈一次一个问题，只整理语序不加观点。成稿永远 vN 递增，禁写「最终发布稿」。快检 P0-P2 清零才交稿。" },
+  { n: "④", t: "配图", b: "按规范写提示词、批量生成候选（≥3 张），全部交作者手动质检。",
+    d: "AI 只做机械检查（文件保存、尺寸格式），不做视觉质量判断；被否决 2 次改批量生成 + 降构图复杂度。" },
+  { n: "⑤", t: "小红书文案", b: "终稿附带 ≤1000 字正文描述（口语化提炼要点）+ 10 个话题词。",
+    d: "话题词只选相关内容，前 5 个放核心词：主标 + 长尾 + 时效词搭配。" },
+  { n: "⑥", t: "复盘", b: "提醒发布 → 24h 后回填真实数据 → 轻复盘 → 作者确认后写调整计划。",
+    d: "只写已确认事实 / 初步观察 / 还不能判断 + 最多 3 个候选动作（每个写清依据）。不补写数据、不写因果。" },
+];
+const stepsEl = document.getElementById("steps");
+STEPS.forEach(s => {
+  const card = document.createElement("div");
+  card.className = "step-card";
+  card.innerHTML = `<div class="step-num">${s.n}</div><h3>${s.t}</h3><p class="brief">${s.b}</p><div class="step-detail"><ul>${s.d.split("。").filter(Boolean).map(x => `<li>${x.trim()}。</li>`).join("")}</ul></div>`;
+  card.onclick = () => card.classList.toggle("open");
+  stepsEl.appendChild(card);
+});
+
+/* ================= 模拟器（纯前端演示脚本，无任何 API） ================= */
+const chat = document.getElementById("simChat");
+const CHAT = {
+  intro: [
+    { st: "来自岗位定位", txt: "你好！我是「AI自媒体运营助手」——不合理蛙AI学社的数字员工。我在作者的飞书里 24 小时在线。" },
+    { st: "我能做", txt: "你只要说一句「帮我写《…》」「生成选题」或「做个复盘」，我就按六环节推进：选题 → 规律 → 写作 → 配图 → 小红书文案 → 复盘。每个需要拍板的节点，我都会停下来等你。" },
+    { st: "边界", txt: "我不会自动发布、不编造数据和经历、不替作者判断图片质量——这些是写进岗位规范的红线。" },
+  ],
+  topics: [
+    { st: "① 读取定位", txt: "正在读取账号定位总览：目标用户是「想用 AI 提效的职场人、内容创作者、小团队经营者」……" },
+    { st: "② 读取素材库", txt: "正在扫描内容素材库：思想卡片 12 张、访谈记录 3 份、对标采集 26 条……（此处为演示数据）" },
+    { st: "③ 生成候选选题", txt: "以下是 3 个候选选题（每个都写清讲什么 / 写给谁 / 解决什么问题 / 素材来源）：\n1. 《把会议纪要交给 AI 的 30 分钟》——写给被会议淹没的职场人，示范 AI 整理纪要的完整流程，素材来源：采访记录。\n2. 《零基础用 AI 搭一个日报系统》——写给想给团队提效的小团队经营者，讲清工具选择与落地步骤，素材来源：操作经验。\n3. 《为什么我用 AI 从不「一键生成」》——写给受 AI 味困扰的创作者，讲判断与改稿方法，素材来源：写作方法论。\n\n（以上为演示示例选题，非真实选题池内容）" },
+    { st: "④ 等确认", txt: "请你拍板：选哪个？或者告诉我想调整的方向。选题决策是人的，我只提供候选和依据。" },
+  ],
+  write: [
+    { st: "① 建素材包", txt: "好，写《把会议纪要交给 AI 的 30 分钟》。先建素材包：定位 ✓ 选题 ✓ 来源文件 ✓ 可用规律 ✓ 四项都齐了。" },
+    { st: "② 访谈（等确认）", txt: "写之前我需要问你 3 个问题，一次一个——这是为了让文章里有【你的】真实判断，而不是我的套话：\n\n第 1 问：你第一次把会议纪要交给 AI 时，最担心的是什么？实际结果如何？" },
+    { st: "③ 提示", txt: "你回答后我会继续追问，然后出初稿（附 3 个标题候选），再停下等你改稿。整条链路里，我不会在你没确认前往下走。" },
+  ],
+  review: [
+    { st: "① 建复盘文件", txt: "收到。我先建复盘文件，关联这篇文章的素材包、成稿和发布时间。" },
+    { st: "② 提醒发布", txt: "如果这篇文章还没发布：请你先发布，然后我们约定 24 小时后回来填数据——我只记录页面上真实显示的数字，不补写、不猜测。" },
+    { st: "③ 轻复盘框架", txt: "24 小时后我会按这个框架做轻复盘：\n· 已确认事实（数据原样）\n· 初步观察（现象，不写成因）\n· 还不能判断（数据不足的部分明确标出）\n· 最多 3 个候选动作（每个写清直接依据），由你拍板\n\n（以上为演示流程，未连接真实数据）" },
+  ],
+};
+let busy = false;
+function addMsg(role, st, txt) {
+  const row = document.createElement("div");
+  row.className = "sim-msg " + role;
+  const av = document.createElement("div");
+  av.className = "av";
+  av.textContent = role === "user" ? "我" : "媒";
+  const bub = document.createElement("div");
+  bub.className = "bub";
+  if (st) { const s = document.createElement("span"); s.className = "st"; s.textContent = st; bub.appendChild(s); }
+  const lines = txt.split("\n");
+  lines.forEach((l, i) => {
+    const p = document.createElement("div");
+    p.innerHTML = l.replace(/`([^`]+)`/g, '<span class="hl">$1</span>').replace(/\*\*(.+?)\*\*/g, "<b>$1</b>") || "&nbsp;";
+    bub.appendChild(p);
+  });
+  row.appendChild(av); row.appendChild(bub);
+  chat.appendChild(row);
+  chat.scrollTop = chat.scrollHeight;
+}
+function showTyping() {
+  const row = document.createElement("div");
+  row.className = "sim-msg bot";
+  row.innerHTML = '<div class="av">媒</div><div class="typing"><span></span><span></span><span></span></div>';
+  row.id = "typingRow";
+  chat.appendChild(row);
+  chat.scrollTop = chat.scrollHeight;
+}
+function hideTyping() { const t = document.getElementById("typingRow"); if (t) t.remove(); }
+const wait = ms => new Promise(r => setTimeout(r, ms));
+async function sim(key) {
+  if (busy) return; busy = true;
+  const script = CHAT[key];
+  addMsg("user", null, promptText(key));
+  for (let i = 0; i < script.length; i++) {
+    await wait(500 + Math.random() * 500);
+    showTyping();
+    await wait(900 + Math.random() * 700);
+    hideTyping();
+    addMsg("bot", script[i].st, script[i].txt);
+  }
+  busy = false;
+}
+function promptText(key) {
+  return { intro: "你是谁？", topics: "帮我生成 3 个选题", write: "帮我写一篇文章", review: "给刚发布的文章做个复盘" }[key];
+}
+/* 开场白 */
+wait(400).then(() => {
+  showTyping();
+  wait(1100).then(() => {
+    hideTyping();
+    addMsg("bot", "演示就绪", "点下面的快捷指令，看我是怎么干活的（纯前端演示，不接任何真实服务）。");
+  });
+});
+</script>
+</body>
+</html>
