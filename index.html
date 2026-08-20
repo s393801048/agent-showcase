@@ -243,6 +243,22 @@
   }
   .camp-frog-footer p { font-size: 13px; color: var(--text-light); margin-top: 10px; }
 
+  /* ---------- 爆款文章画廊 ---------- */
+  .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 8px; }
+  .gallery figure { margin: 0; }
+  .gallery img {
+    width: 100%; height: auto;
+    border-radius: var(--radius-m);
+    border: 1.5px solid var(--line);
+    box-shadow: 0 6px 18px rgba(255,166,0,.10);
+    transition: transform .2s ease, box-shadow .2s ease;
+    cursor: zoom-in;
+  }
+  .gallery img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 14px 30px rgba(255,166,0,.20);
+  }
+
   /* ---------- 关于我们 ---------- */
   .about-slogan {
     text-align: center;
@@ -286,7 +302,7 @@
   @media (max-width: 760px) {
     .hero h1 { font-size: 30px; }
     .hero .frog { width: 92px; height: 92px; right: 12px; top: 14px; }
-    .steps, .dual, .team-grid { grid-template-columns: 1fr; }
+    .steps, .dual, .team-grid, .gallery { grid-template-columns: 1fr; }
     .replay .bubble { max-width: 100%; }
     section { padding-top: 56px; }
   }
@@ -425,6 +441,26 @@
         <div class="pill"><span class="dot"></span><b>DeepSeek v4-flash</b>　模型推理</div>
         <div class="pill"><span class="dot"></span><b>飞书开放平台</b>　消息与文件</div>
         <div class="pill"><span class="dot"></span><b>lark-cli</b>　飞书表格 / 文档 / 多维表格操作</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 爆款文章 -->
+  <section>
+    <div class="container">
+      <h2 class="sec-title">用这套系统跑出来的爆款文章</h2>
+      <p class="sec-desc">以下为真实发布的文章截图（阅读 / 点赞 / 收藏 / 转发），全部由这套系统生产。</p>
+      <div class="gallery">
+        <figure><img src="assets/result-01.png" alt="爆款文章截图 1"></figure>
+        <figure><img src="assets/result-02.png" alt="爆款文章截图 2"></figure>
+        <figure><img src="assets/result-03.png" alt="爆款文章截图 3"></figure>
+        <figure><img src="assets/result-04.png" alt="爆款文章截图 4"></figure>
+        <figure><img src="assets/result-05.png" alt="爆款文章截图 5"></figure>
+        <figure><img src="assets/result-06.png" alt="爆款文章截图 6"></figure>
+        <figure><img src="assets/result-07.png" alt="爆款文章截图 7"></figure>
+        <figure><img src="assets/result-08.png" alt="爆款文章截图 8"></figure>
+        <figure><img src="assets/result-09.png" alt="爆款文章截图 9"></figure>
+        <figure><img src="assets/result-10.png" alt="爆款文章截图 10"></figure>
       </div>
     </div>
   </section>
