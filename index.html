@@ -255,6 +255,22 @@
   .sys-tree .note { color: var(--text-light); font-size: 12.5px; font-family: var(--font-cn); }
   .sys-tree .br { color: #ccc; }
 
+  /* ---------- Skill 全家桶 ---------- */
+  .skill-group { margin-top: 28px; }
+  .skill-group h3 {
+    font-size: 16px; font-weight: 800; color: var(--orange-deep);
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .skill-group h3::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .skill-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .skill-card {
+    background: #FFFDF7; border: 1px solid #F3E3B8;
+    border-radius: var(--radius-m); padding: 14px 16px;
+  }
+  .skill-card b { display: block; font-size: 14.5px; margin-bottom: 4px; }
+  .skill-card p { font-size: 13px; color: #666; margin: 0; }
+
   /* ---------- 爆款文章画廊 ---------- */
   .gal-group {
     font-size: 17px; font-weight: 800; color: var(--orange-deep);
@@ -346,7 +362,7 @@
   @media (max-width: 760px) {
     .hero h1 { font-size: 30px; }
     .hero .frog { width: 92px; height: 92px; right: 12px; top: 14px; }
-    .steps, .dual, .team-grid, .gallery, .course-grid, .course-cards { grid-template-columns: 1fr; }
+    .steps, .dual, .team-grid, .gallery, .course-grid, .course-cards, .skill-grid { grid-template-columns: 1fr; }
     .replay .bubble { max-width: 100%; }
     section { padding-top: 56px; }
   }
@@ -503,11 +519,85 @@
         <div><span class="br">├──</span> <span class="folder">04_选题库/</span> <span class="note">← 选题池：候选与已确认选题</span></div>
         <div><span class="br">├──</span> <span class="folder">05_内容草稿/</span> <span class="note">← 每篇文章一个文件夹：素材包 → 初稿 → 成稿 vN → 排版</span></div>
         <div><span class="br">│</span> &nbsp;&nbsp;<span class="br">├──</span> <span class="folder">公众号文章/</span></div>
+        <div><span class="br">│</span> &nbsp;&nbsp;<span class="br">├──</span> <span class="folder">小红书笔记/</span></div>
         <div><span class="br">│</span> &nbsp;&nbsp;<span class="br">└──</span> <span class="folder">视频文案脚本/</span></div>
         <div><span class="br">├──</span> <span class="folder">06_数据复盘/</span> <span class="note">← 发布后数据复盘</span></div>
         <div><span class="br">├──</span> <span class="folder">07_视觉与排版/</span> <span class="note">← 排版模板库 + 品牌图片库</span></div>
         <div><span class="br">└──</span> <span class="folder">09_AI员工/</span> <span class="note">← 岗位卡、工作流、使用说明书</span></div>
         <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="br">└──</span> <span class="folder">001_Agent岗位卡/</span> <span class="note">← 岗位定义、流程图、RFC2119 工作流</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 内容创作 Skill 全家桶 -->
+  <section>
+    <div class="container">
+      <h2 class="sec-title">内容创作 Skill 全家桶</h2>
+      <p class="sec-desc">这套系统能跑起来，靠的是 17 个配套技能——每个环节一个，把规矩固化进 AI 的日常。</p>
+
+      <div class="skill-group">
+        <h3>一、选题与素材采集</h3>
+        <div class="skill-grid">
+          <div class="skill-card"><b>选题生成器</b><p>读账号定位和内容素材，生成候选选题写入选题池，每个选题写清讲什么、写给谁、解决什么问题、素材来源；与已有选题去重，材料不足宁少不凑数。</p></div>
+          <div class="skill-card"><b>全网调研</b><p>15 个平台（小红书、公众号、B站、知乎、视频号等）调研搜索，为选题和内容找素材。</p></div>
+          <div class="skill-card"><b>小红书采集</b><p>批量采集小红书对标笔记入库（信息 + 图片 + 评论 + 视频转写），按规范去重归档。</p></div>
+          <div class="skill-card"><b>公众号文章抓取</b><p>微信文章链接抓取成结构化 markdown（标题、发布时间、正文、图片本地化）。</p></div>
+          <div class="skill-card"><b>对标拆解</b><p>拆解对标账号的内容结构。</p></div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>二、账号定位</h3>
+        <div class="skill-grid">
+          <div class="skill-card"><b>账号定位访谈</b><p>账号定位与包装的访谈流程。</p></div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>三、规律提取</h3>
+        <div class="skill-grid">
+          <div class="skill-card"><b>规律提取器</b><p>从对标素材提炼标题、开头、正文结构三份规律文件（同一种做法 ≥2 条素材才写成候选规律）。</p></div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>四、知识卡片沉淀</h3>
+        <div class="skill-grid">
+          <div class="skill-card"><b>思想卡片</b><p>把日常对话里的观点沉淀成可更新的思想卡片（一张卡片 = 一个独立观点）。</p></div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>五、写作与检查</h3>
+        <div class="skill-grid">
+          <div class="skill-card"><b>内容写作</b><p>按固定流程完成一篇内容——素材包 → 逐个访谈挖真实判断 → AI 初稿（3 个标题候选）→ 作者改选 → 成稿 vN；每个节点停下等确认，全程不编造。</p></div>
+          <div class="skill-card"><b>写作风格规范</b><p>通用公众号写作风格——去 AI 味、事实严谨、分析拆到机制层、建议可直接执行。</p></div>
+          <div class="skill-card"><b>风格检查</b><p>成稿合规检查（检查 agent），快检 / 全检双模式。</p></div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>六、配图</h3>
+        <div class="skill-grid">
+          <div class="skill-card"><b>插画配图</b><p>按品牌风格生成插画配图，批量候选全部交作者质检。</p></div>
+          <div class="skill-card"><b>个人照片配图</b><p>用个人照片生成配图。</p></div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>七、排版与发布</h3>
+        <div class="skill-grid">
+          <div class="skill-card"><b>公众号排版</b><p>套用自己设计的排版模板生成微信兼容 HTML。</p></div>
+          <div class="skill-card"><b>公众号发布</b><p>发布到公众号草稿箱。</p></div>
+          <div class="skill-card"><b>小红书长文排版</b><p>公众号成稿转小红书「写长文→导入文件」兼容格式。</p></div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>八、复盘</h3>
+        <div class="skill-grid">
+          <div class="skill-card"><b>发布复盘</b><p>发布后 24 小时回填真实数据做轻复盘（已确认事实 / 初步观察 / 还不能判断 + 候选动作）。</p></div>
+        </div>
       </div>
     </div>
   </section>
