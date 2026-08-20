@@ -101,40 +101,6 @@
   }
   .sec-desc { color: var(--text-light); font-size: 15px; margin-bottom: 32px; max-width: 720px; }
 
-  /* ---------- 真实对话回放 ---------- */
-  .replay {
-    margin-top: -56px; background: #FFFFFF; border-radius: var(--radius-l);
-    padding: 28px;
-    border: 1.5px solid transparent;
-    background-clip: padding-box;
-    box-shadow: 0 8px 24px rgba(255,166,0,.14), 0 2px 8px rgba(255,166,0,.06);
-    position: relative;
-  }
-  .replay::before {
-    content: ""; position: absolute; inset: 0; border-radius: var(--radius-l);
-    padding: 1.5px; background: linear-gradient(135deg, #FFD98A, #FFB84D, #FF8A65);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
-  }
-  .replay .tag {
-    display: inline-block; background: var(--bg-soft); color: #B36B00;
-    font-size: 13px; font-weight: 700; padding: 5px 14px; border-radius: 999px; margin-bottom: 16px;
-  }
-  .replay .row { display: flex; gap: 14px; margin-bottom: 14px; align-items: flex-start; }
-  .replay .avatar {
-    width: 36px; height: 36px; border-radius: 999px; flex: none;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; font-weight: 800; color: #fff;
-  }
-  .replay .avatar.user { background: linear-gradient(135deg, #8a8a8a, #666); }
-  .replay .avatar.bot { background: linear-gradient(135deg, var(--orange), var(--orange-deep)); }
-  .replay .bubble {
-    background: #F7F7F7; border-radius: 6px 16px 16px 16px; padding: 12px 16px;
-    max-width: 86%; font-size: 15px;
-  }
-  .replay .bubble.user { background: var(--bg-soft); border-radius: 16px 6px 16px 16px; }
-  .replay .meta { font-size: 12px; color: var(--text-light); margin-top: 10px; }
-
   /* ---------- 六环节 ---------- */
   .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .step-card {
@@ -326,32 +292,6 @@
   .team-role { color: var(--orange-deep); font-size: 13px; font-weight: 700; margin: 4px 0 12px; }
   .team-bio { font-size: 13.5px; color: #555; text-align: left; line-height: 1.8; }
 
-  /* ---------- 课程展示（关于我们） ---------- */
-  .course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
-  .course-grid figure {
-    margin: 0; background: var(--bg-soft);
-    border-radius: var(--radius-m); padding: 10px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .course-grid img {
-    width: 100%; height: 560px; object-fit: contain;
-    border-radius: var(--radius-s);
-  }
-  .course-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
-  .course-card {
-    display: block; text-decoration: none;
-    background: #FFFDF7; border: 1px solid #F3E3B8;
-    border-radius: var(--radius-m); padding: 16px 18px;
-    transition: all .2s ease;
-  }
-  .course-card:hover {
-    border-color: var(--orange);
-    box-shadow: 0 10px 24px rgba(255,166,0,.14);
-    transform: translateY(-2px);
-  }
-  .course-card h3 { font-size: 14.5px; font-weight: 800; color: var(--text); margin-bottom: 6px; line-height: 1.5; }
-  .course-card p { font-size: 13px; color: var(--text-light); }
-
   /* ---------- 页脚 ---------- */
   footer { margin-top: 80px; background: #333333; color: #ccc; border-radius: var(--radius-xl) var(--radius-xl) 0 0; padding: 40px 0 48px; }
   footer .container { display: flex; flex-direction: column; gap: 10px; }
@@ -362,8 +302,7 @@
   @media (max-width: 760px) {
     .hero h1 { font-size: 30px; }
     .hero .frog { width: 92px; height: 92px; right: 12px; top: 14px; }
-    .steps, .dual, .team-grid, .gallery, .course-grid, .course-cards, .skill-grid { grid-template-columns: 1fr; }
-    .replay .bubble { max-width: 100%; }
+    .steps, .dual, .team-grid, .gallery, .skill-grid { grid-template-columns: 1fr; }
     section { padding-top: 56px; }
   }
 </style>
@@ -397,28 +336,6 @@
 
 <!-- ======== 面板一：Agent 介绍 ======== -->
 <div id="panel-agent" class="tab-panel active">
-
-  <!-- 真实对话回放 -->
-  <div class="container">
-    <div class="replay">
-      <span class="tag">真实对话回放 · 2026-08-17 实测（飞书私聊）</span>
-      <div class="row">
-        <div class="avatar user">我</div>
-        <div class="bubble user">你好</div>
-      </div>
-      <div class="row">
-        <div class="avatar bot">媒</div>
-        <div class="bubble">
-          你好！我是你的 AI 自媒体运营助手 👋<br>
-          随时可以开始内容生产，比如：<br><br>
-          · <b>写文章</b>：给我选题，我按六环节推进，每个需要你确认的节点都会停下来等你<br>
-          · <b>生成选题</b>：读定位和素材，往选题池里补充候选<br>
-          · <b>复盘</b>：发布后 24 小时回填数据做轻复盘
-        </div>
-      </div>
-      <div class="meta">收到 → 4.7 秒生成回复并送达（gateway 日志 14:35:58 / 14:36:05）</div>
-    </div>
-  </div>
 
   <!-- 六环节 -->
   <section>
@@ -754,28 +671,6 @@
           <p class="team-role">联合创始人</p>
           <p class="team-bio">连续创业者，南京农创客联盟副秘书长，南京市六合区青年委员会委员。</p>
         </div>
-      </div>
-
-      <h2 class="sec-title" style="margin-top:36px;">江浩曾参与研发的课程</h2>
-      <p class="desc">江浩是联合创始人之一，前比亚迪工程师，现活水智能讲师、活水 AI 实验室（42ailab）成员，主要研究智能体、RAG、向量数据库。他参与研发的课程来自开智学堂 × 活水智能，围绕 Claude Code 工具生态展开。</p>
-      <div class="course-grid">
-        <figure><img src="assets/course-01.jpg" alt="Claude Code 101 课程海报"></figure>
-        <figure><img src="assets/course-02.jpg" alt="课程海报"></figure>
-        <figure><img src="assets/course-03.jpg" alt="课程海报"></figure>
-      </div>
-      <div class="course-cards">
-        <a class="course-card" href="https://mp.weixin.qq.com/s/7unR1N5csBRyKaUe88Jffw" target="_blank" rel="noopener">
-          <h3>Claude Code 101：用 CC 的人分三个阶段，你卡在第几个？</h3>
-          <p>从入门到高阶理解 Claude Code：工具链、Skill、Hook、Agent 的定义与用法。点击查看课程介绍 →</p>
-        </a>
-        <a class="course-card" href="https://mp.weixin.qq.com/s/-6cRvKmeL58gE9QYrQQjoA" target="_blank" rel="noopener">
-          <h3>拥抱AI新未来，从MCP入门开始</h3>
-          <p>MCP——提升工作效率的强大引擎，从入门开始理解模型上下文协议。点击查看课程介绍 →</p>
-        </a>
-        <a class="course-card" href="https://mp.weixin.qq.com/s/0pylWkwXX3dvPe6wCXMhWA" target="_blank" rel="noopener">
-          <h3>知识工作者的创新利器！「AI学术分析」首期内测</h3>
-          <p>快速掌握任意一个领域的知识——AI 学术分析工具的首期招募。点击查看课程介绍 →</p>
-        </a>
       </div>
     </div>
   </section>
