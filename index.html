@@ -243,6 +243,18 @@
   }
   .camp-frog-footer p { font-size: 13px; color: var(--text-light); margin-top: 10px; }
 
+  /* ---------- 系统结构树 ---------- */
+  .sys-tree {
+    background: #FBF8F1; border: 1.5px solid var(--line);
+    border-radius: var(--radius-l); padding: 26px 28px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13.5px; line-height: 2; color: #555;
+    overflow-x: auto;
+  }
+  .sys-tree .folder { color: var(--orange-deep); font-weight: 700; }
+  .sys-tree .note { color: var(--text-light); font-size: 12.5px; font-family: var(--font-cn); }
+  .sys-tree .br { color: #ccc; }
+
   /* ---------- 爆款文章画廊 ---------- */
   .gal-group {
     font-size: 17px; font-weight: 800; color: var(--orange-deep);
@@ -300,15 +312,15 @@
 
   /* ---------- 课程展示（关于我们） ---------- */
   .course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
-  .course-grid figure { margin: 0; }
-  .course-grid img {
-    width: 100%; height: auto;
-    border-radius: var(--radius-m);
-    border: 1.5px solid var(--line);
-    box-shadow: 0 6px 18px rgba(255,166,0,.10);
-    transition: transform .2s ease;
+  .course-grid figure {
+    margin: 0; background: var(--bg-soft);
+    border-radius: var(--radius-m); padding: 10px;
+    display: flex; align-items: center; justify-content: center;
   }
-  .course-grid img:hover { transform: scale(1.02); }
+  .course-grid img {
+    width: 100%; height: 560px; object-fit: contain;
+    border-radius: var(--radius-s);
+  }
   .course-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
   .course-card {
     display: block; text-decoration: none;
@@ -323,12 +335,6 @@
   }
   .course-card h3 { font-size: 14.5px; font-weight: 800; color: var(--text); margin-bottom: 6px; line-height: 1.5; }
   .course-card p { font-size: 13px; color: var(--text-light); }
-  .course-relation {
-    background: var(--bg-soft); border: 1px solid var(--stroke);
-    border-radius: var(--radius-m); padding: 18px 20px; margin-top: 20px;
-  }
-  .course-relation h3 { font-size: 15.5px; font-weight: 800; margin-bottom: 8px; color: var(--orange-deep); }
-  .course-relation p { font-size: 14px; }
 
   /* ---------- 页脚 ---------- */
   footer { margin-top: 80px; background: #333333; color: #ccc; border-radius: var(--radius-xl) var(--radius-xl) 0 0; padding: 40px 0 48px; }
@@ -479,6 +485,29 @@
         <div class="pill"><span class="dot"></span><b>DeepSeek v4-flash</b>　模型推理</div>
         <div class="pill"><span class="dot"></span><b>飞书开放平台</b>　消息与文件</div>
         <div class="pill"><span class="dot"></span><b>lark-cli</b>　飞书表格 / 文档 / 多维表格操作</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 这套系统长什么样 -->
+  <section>
+    <div class="container">
+      <h2 class="sec-title">这套系统长什么样</h2>
+      <p class="sec-desc">这是它最终搭建出来的系统全貌——每个文件夹有明确职责，AI 按规矩在各目录间流转：素材进来、成稿出去、数据回来。</p>
+      <div class="sys-tree">
+        <div><span class="folder">AI第二大脑_内容创作系统/</span></div>
+        <div><span class="br">├──</span> <span class="folder">00_个人背景/</span> <span class="note">← 定位、作者档案、固定话术（AI 写作前必读）</span></div>
+        <div><span class="br">├──</span> <span class="folder">01_对标账号/</span> <span class="note">← 对标账号素材与链接</span></div>
+        <div><span class="br">├──</span> <span class="folder">02_内容素材/</span> <span class="note">← 知识库：思想卡片、访谈、对标采集</span></div>
+        <div><span class="br">├──</span> <span class="folder">03_内容规律/</span> <span class="note">← 爆款规律：标题 / 开头 / 正文结构</span></div>
+        <div><span class="br">├──</span> <span class="folder">04_选题库/</span> <span class="note">← 选题池：候选与已确认选题</span></div>
+        <div><span class="br">├──</span> <span class="folder">05_内容草稿/</span> <span class="note">← 每篇文章一个文件夹：素材包 → 初稿 → 成稿 vN → 排版</span></div>
+        <div><span class="br">│</span> &nbsp;&nbsp;<span class="br">├──</span> <span class="folder">公众号文章/</span></div>
+        <div><span class="br">│</span> &nbsp;&nbsp;<span class="br">└──</span> <span class="folder">视频文案脚本/</span></div>
+        <div><span class="br">├──</span> <span class="folder">06_数据复盘/</span> <span class="note">← 发布后数据复盘</span></div>
+        <div><span class="br">├──</span> <span class="folder">07_视觉与排版/</span> <span class="note">← 排版模板库 + 品牌图片库</span></div>
+        <div><span class="br">└──</span> <span class="folder">09_AI员工/</span> <span class="note">← 岗位卡、工作流、使用说明书</span></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="br">└──</span> <span class="folder">001_Agent岗位卡/</span> <span class="note">← 岗位定义、流程图、RFC2119 工作流</span></div>
       </div>
     </div>
   </section>
@@ -657,10 +686,6 @@
           <h3>知识工作者的创新利器！「AI学术分析」首期内测</h3>
           <p>快速掌握任意一个领域的知识——AI 学术分析工具的首期招募。点击查看课程介绍 →</p>
         </a>
-      </div>
-      <div class="course-relation">
-        <h3>这些课程和这个训练营有什么关系？</h3>
-        <p>江浩的课程教你「用对工具」——Claude Code、MCP、Skill 这些 AI 工具本身怎么用；这个训练营教你「用工具搭系统」——用同一套工具，把你自己的做事流程搭成一个 24 小时在线的 Agent。一个是学会开车，一个是学会造自己的生产线：训练营里你会用到的 Claude Code、Skill 体系，正是江浩课程讲的那套工具生态。</p>
       </div>
     </div>
   </section>
