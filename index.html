@@ -292,6 +292,26 @@
   .team-role { color: var(--orange-deep); font-size: 13px; font-weight: 700; margin: 4px 0 12px; }
   .team-bio { font-size: 13.5px; color: #555; text-align: left; line-height: 1.8; }
 
+  /* ---------- 课程展示（关于我们） ---------- */
+  .course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+  .course-grid figure { margin: 0; }
+  .course-grid img {
+    width: 100%; height: auto;
+    border-radius: var(--radius-m);
+    border: 1.5px solid var(--line);
+    box-shadow: 0 6px 18px rgba(255,166,0,.10);
+    transition: transform .2s ease;
+  }
+  .course-grid img:hover { transform: scale(1.02); }
+  .course-links { margin-top: 16px; font-size: 14px; }
+  .course-links a {
+    display: inline-block;
+    color: var(--orange-deep); font-weight: 600;
+    text-decoration: none; border-bottom: 1px dashed #E8C987;
+    margin: 6px 16px 6px 0;
+  }
+  .course-links a:hover { border-bottom-style: solid; }
+
   /* ---------- 页脚 ---------- */
   footer { margin-top: 80px; background: #333333; color: #ccc; border-radius: var(--radius-xl) var(--radius-xl) 0 0; padding: 40px 0 48px; }
   footer .container { display: flex; flex-direction: column; gap: 10px; }
@@ -302,7 +322,7 @@
   @media (max-width: 760px) {
     .hero h1 { font-size: 30px; }
     .hero .frog { width: 92px; height: 92px; right: 12px; top: 14px; }
-    .steps, .dual, .team-grid, .gallery { grid-template-columns: 1fr; }
+    .steps, .dual, .team-grid, .gallery, .course-grid { grid-template-columns: 1fr; }
     .replay .bubble { max-width: 100%; }
     section { padding-top: 56px; }
   }
@@ -461,6 +481,7 @@
         <figure><img src="assets/result-08.png" alt="爆款文章截图 8"></figure>
         <figure><img src="assets/result-09.png" alt="爆款文章截图 9"></figure>
         <figure><img src="assets/result-10.png" alt="爆款文章截图 10"></figure>
+        <figure><img src="assets/result-11.png" alt="公众号后台数据截图"></figure>
       </div>
     </div>
   </section>
@@ -591,6 +612,18 @@
           <p class="team-role">联合创始人</p>
           <p class="team-bio">连续创业者，南京农创客联盟副秘书长，南京市六合区青年委员会委员。</p>
         </div>
+      </div>
+
+      <h2 class="sec-title" style="margin-top:36px;">江浩曾参与研发的课程</h2>
+      <div class="course-grid">
+        <figure><img src="assets/course-01.jpg" alt="Claude Code 101 课程海报"></figure>
+        <figure><img src="assets/course-02.jpg" alt="课程海报"></figure>
+        <figure><img src="assets/course-03.jpg" alt="课程海报"></figure>
+      </div>
+      <div class="course-links">
+        <a href="https://mp.weixin.qq.com/s/0pylWkwXX3dvPe6wCXMhWA" target="_blank" rel="noopener">课程介绍 1</a>
+        <a href="https://mp.weixin.qq.com/s/7unR1N5csBRyKaUe88Jffw" target="_blank" rel="noopener">课程介绍 2</a>
+        <a href="https://mp.weixin.qq.com/s/-6cRvKmeL58gE9QYrQQjoA" target="_blank" rel="noopener">课程介绍 3</a>
       </div>
     </div>
   </section>
